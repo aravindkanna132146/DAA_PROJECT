@@ -1,16 +1,103 @@
-# React + Vite
+# Sortify — Interactive Sorting Algorithm Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> **DAA Academic Project** — Design and Analysis of Algorithms
 
-Currently, two official plugins are available:
+A modern, interactive web application that visually demonstrates how popular sorting algorithms work — built with **React + Vite**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Run locally with:
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Then open [http://localhost:5173](http://localhost:5173)
+
+---
+
+## ✨ Features
+
+- **5 Sorting Algorithms** with step-by-step animation
+- **Color-coded visualization** — comparing (amber), swapping (rose), sorted (green)
+- **Live statistics** — comparisons, swaps, elapsed time, array size, status
+- **Algorithm info panel** — time/space complexity, stability, in-place properties
+- **Controls** — Start, Pause/Resume, Reset at any point
+- **Array generators** — Random, Nearly Sorted, Reversed
+- **Adjustable** array size (5–150 elements) and animation speed (1–10)
+- **Dark / Light** theme toggle
+- Fully **responsive** — desktop, tablet, mobile
+
+---
+
+## 🔢 Algorithms Implemented
+
+| Algorithm | Best | Average | Worst | Space | Stable |
+|-----------|------|---------|-------|-------|--------|
+| Bubble Sort | O(n) | O(n²) | O(n²) | O(1) | ✅ |
+| Selection Sort | O(n²) | O(n²) | O(n²) | O(1) | ❌ |
+| Insertion Sort | O(n) | O(n²) | O(n²) | O(1) | ✅ |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) | O(n) | ✅ |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n) | ❌ |
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 19 + Vite 8** — frontend framework & build tool
+- **Lucide React** — icons
+- **Vanilla CSS** — dark/light design system with CSS variables
+- **JavaScript (ES2024)** — all sorting logic runs purely in the browser
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── App.jsx                     # Main app + sorting engine
+├── index.css                   # Design system (dark/light themes)
+├── algorithms/
+│   ├── bubbleSort.js
+│   ├── selectionSort.js
+│   ├── insertionSort.js
+│   ├── mergeSort.js
+│   ├── quickSort.js
+│   ├── algorithmData.js        # Complexity metadata
+│   └── index.js                # Dispatchers + array generators
+└── components/
+    ├── ControlPanel.jsx        # Sliders, selects, buttons
+    ├── VisualizationArea.jsx   # Animated bars + legend
+    ├── StatsPanel.jsx          # Live stats cards
+    └── AlgorithmInfo.jsx       # Complexity + stability display
+```
+
+---
+
+## 📖 How It Works
+
+Each sorting algorithm is instrumented to **generate all animation steps upfront** before playback begins. Each step records:
+- The current array state
+- Which indices are being **compared**
+- Which indices are being **swapped**
+- Which indices are **sorted/finalized**
+- Running totals of **comparisons** and **swaps**
+
+The animation engine replays these steps using `setTimeout` with a configurable delay mapped from the speed slider.
+
+---
+
+## 📚 Academic Context
+
+This project was created as part of the **Design and Analysis of Algorithms (DAA)** course. It demonstrates:
+
+- Algorithmic correctness of all 5 sorting algorithms
+- Visual understanding of time complexity differences
+- Comparative analysis through live statistics
+
+---
+
+*Built by Kanna Aravind — DAA Academic Project*
